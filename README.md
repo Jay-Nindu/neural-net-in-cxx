@@ -1,5 +1,5 @@
 # neural-net-in-cxx
-Implementation of neural network architecture in c++
+Implementation of neural network architecture in c++. Currently a work in progress, below is listed my progress.
 
 
 ## Issues I came across
