@@ -10,4 +10,4 @@ Included also in the discussion below, as well as in the "Pytorch implementation
 3) Graphs - graphs generated from matplotlib.pyplot that contain error vs epoch curves for both the pytorch and c++ implementations of the neural network. (Incomplete)
 
 # An explanation of my neural network implementation
-## A.K.A. an explanation of the theory behind gradient descent
+A.K.A. an explanation of the theory behind gradient descent
