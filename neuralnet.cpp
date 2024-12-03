@@ -34,17 +34,16 @@ matrix reluLayer::forward(matrix input){
     else{
         lastOutput = input;
     }
-    //throw std::invalid_argument( "hail mary test breaker\n" );
 
     return lastOutput;
 }
 
 void reluLayer::updateWeights(double learningRate){
-    // cerr << weightsGrad << endl;
-    weights = weights - weightsGrad*learningRate;
+    // cout << "WEIGHTS " << weightsGrad << endl;
+    weights -= weightsGrad*learningRate;
     weightsGrad.clear(); //clear gradients
-    biases = biases-biasesGrad*learningRate;
-    //cerr << biases << endl;
+    biases -= biasesGrad*learningRate;
+    // cout << "BIASES " << biasesGrad << endl;
     biasesGrad.clear();
 
 }
@@ -64,7 +63,7 @@ model::model(vector<int> &nodes){
 matrix model::forwardPass(matrix input){
     for(int i = 0; i < structure.size(); i++){
         input = structure[i].forward(input);
-
+        // cout << "Next output " << input;
     }
     return input;
 }

@@ -1,52 +1,55 @@
 #include "optimiser.h"
 #include<iostream>
 
-using namespace std;
-int main(){
-    int numSize; cin >> numSize;
-
-    vector<matrix> inputs, outputs;
-    
-    matrix mx(1, 1, -1.0);
-    matrix mn(1, 1, 1000000.0);
-
+void readIn(vector<matrix> &inputs, vector<matrix> &outputs, int numSize){
+    // reading in X
     for(int i = 0; i < numSize; i++){
-        matrix x(1, 1);
-        matrix y(1, 1);
-        cin >> x >> y;
+        matrix x(1, 8);
+        cin >> x;
 
         inputs.push_back(x);
-        outputs.push_back(y);
-
-        for(int col = 0; col < mx.columns; col++){
-            if(x[0][col] > mx[0][col]) mx[0][col] = x[0][col];
-            if(x[0][col] < mn[0][col]) mn[0][col] = x[0][col];
-        }
     }
 
-    //regularising the data!
-    matrix denom = mx-mn;
+    // reading in Y
     for(int i = 0; i < numSize; i++){
-        inputs[i] = elementWiseDiv((inputs[i] - mn), denom);
+        matrix y(1,1);
+        cin >> y;
+        outputs.push_back(y);
     }
 
-    vector<int> structure{1, 5, 5, 1}; // testing ability to approximate Ek = 1/2 mv^2
+}
+
+using namespace std;
+int main(){
+    // int numSize; cin >> numSize;
+
+    vector<matrix> trainInputs, trainOutpus, testInputs, testOutputs;
+    readIn(trainInputs, trainOutpus, 14447); //14447
+    readIn(testInputs, testOutputs, 6193);
+
+
+
+
+    vector<int> structure{8, 24, 12, 6, 1}; 
     model myModel(structure);
 
 
     int numEpochs = 10;
     for(int e = 0; e < numEpochs; e++){
         double currError = 0.0;
-        for(int i = 0; i < numSize; i++){
-            // cerr << "input " << inputs[i] << endl;
-            currError += forward(myModel, inputs[i], outputs[i], numSize);
+        for(int i = 0; i < trainInputs.size(); i++){
+            currError += forward(myModel, trainInputs[i], trainOutpus[i], 14447.0); //14447.0
         }
-        backpropogate(myModel, 0.01);
+        backpropogate(myModel, 0.001);
 
-        // for(int i = 0; i < myModel.structure.size(); i++){
-        //     cerr << myModel.structure[i].weights << endl;
-        // }
-        cerr << "FINAL ERROR FOR EPOCH " << currError << endl;
+        cout << "train ERROR FOR EPOCH " << currError << endl;
+
+
+        currError = 0.0;    
+        for(int i = 0; i < 6193; i++){
+            currError += forward_notrain(myModel, testInputs[i], testOutputs[i], 6193.0);
+        }
+        cout << "test ERROR FOR EPOCH " << currError << endl;
     }
 
 
