@@ -1,7 +1,7 @@
 # neural-net-in-cxx
 Implementation of neural network architecture in c++. This is designed to predict housing prices from the [California housing dataset](https://scikit-learn.org/dev/modules/generated/sklearn.datasets.fetch_california_housing.html). The model uses He weight initialisation, and also leaky-relu. Feature vectors are standardised before being passed into the neural network. Backpropogation uses batch gradient descent. MSE loss is used as a criterion. 
 
-Included also in the discussion below, as well as in the "Pytorch implementation" folder, is an implementation of a neural network in pytorch also trained on the [California housing dataset](https://scikit-learn.org/dev/modules/generated/sklearn.datasets.fetch_california_housing.html). This will serve as a touchstone to compare the effectiveness of my neural-net implentation against.
+Included also in the discussion below, as well as in [pytorch_implementation.py](pytorch_implementation.py), is an implementation of a neural network in pytorch also trained on the [California housing dataset](https://scikit-learn.org/dev/modules/generated/sklearn.datasets.fetch_california_housing.html). This will serve as a touchstone to compare the effectiveness of my neural-net implentation against.
 
 ## Files/Folders
 1) Pytorch implementation - contains a neural network implemented using pytorch
