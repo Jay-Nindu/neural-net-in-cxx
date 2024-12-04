@@ -4,8 +4,8 @@ Implementation of neural network architecture in c++. This is designed to predic
 Included also in the discussion below, as well as in [pytorch_implementation.py](pytorch_implementation.py), is an implementation of a neural network in pytorch also trained on the [California housing dataset](https://scikit-learn.org/dev/modules/generated/sklearn.datasets.fetch_california_housing.html). This will serve as a touchstone to compare the effectiveness of my neural-net implentation against.
 
 ## Files/Folders
-1) Pytorch implementation - contains a neural network implemented using pytorch
-2) C++ implementation - contains all relevant files to my implementation of a neural network in c++.
+1) [pytorch_implementation.py](pytorch_implementation.py) - contains a neural network implemented using pytorch
+2) [C++ implementation]("C++Implementation") - contains all relevant files to my implementation of a neural network in c++.
 3) input.txt is the input file containing data from the California housing dataset - used as input for the c++ implementation (input taken in main.cpp)
 4) Output: contains outputs from both the python and cpp implementations.
     a) "cpp: predicted vs actual.txt": contains input value (x), output of the model (predicted) and target (y), ascertained in final epoch of training.
