@@ -57,8 +57,9 @@ By stacking these layers we create a mathematical function mapping between the d
 ## How do we train neural networks so they can better model the relationship between X (inputs) and Y (outputs) 
 We train our neural networks in order to optimise a cost function. I use the mean squared error loss defined as:
 ```math
-\frac{1}{n} \Sigma_{i=1}^n (\hat{y}_i - y_i)^2
+\frac{1}{2n} \Sigma_{i=1}^n (\hat{y}_i - y_i)^2
 ```
+note the 2 on the denominator which simplifies finding the gradient as described below.
 By optimising this with respects to the weights and biases in our neural network, we minimise our cost function and thus hope to improve the accuracy of our model. Unlike linear regression, this optimisation problem does not have a closed form solution - so we use a process called gradient descent.
 
 Gradient descent involves calculating the gradient of our loss with respect to each weight and bias in our model. This gradient represents the steepest incline at the state the model is currently in. By subtracting the respective gradient from each weight, we are moving down the gradient (i.e. down the curve - see below diagram) and moving to the point of lowest cost.
@@ -66,10 +67,37 @@ Gradient descent involves calculating the gradient of our loss with respect to e
 ![Grad descent](README_images/GradDescDesc.png)
 
 Because our neural network is essentialy a series of composed functions of such as: 
+```math
+w_n\cdot ReLU(w_{n-1} \cdot X + b_{n-1}) + b_n
 ```
-```
-we can compute the gradient at any point by using the chain rule. For example the gradient of the loss with respects to the loss of the FINISH
+where $w_n$ and $b_n$ are the respective weights and biases for layer $n$, we can compute the gradient at any point by using the chain rule. For example we take the loss with respect to the output of any layer (which for the final layer is simply $ \hat{y} - y $). 
+Then the gradient of our loss with respect to the weights of that layer $i$ is:
 
+```math
+\begin{aligned}
+\frac{d \text{ Loss of this layer}}{w_i} &= \frac{d(w_ix+b_i)}{d w_i} \cdot \frac{d \text{ LeakyReLU}(w_ix+b_i)}{d(w_ix+b_i)} \cdot \frac{d \text{ Loss of this layer}}{d \text{ LeakyReLU}(w_ix+b_i)} \\
+&= x^T \cdot [1 \text{ if } x>0 \text{, or } \alpha \text{ if } x<0] \cdot \frac{d \text{ Loss of this layer}}{d \text{ LeakyReLU}(w_ix+b_i)}
+\end{aligned}
+```
+```math
+\begin{aligned}
+\frac{d \text{ Loss of this layer}}{w_i} &= \frac{d(w_ix+b_i)}{d b_i} \cdot \frac{d \text{ LeakyReLU}(w_ix+b_i)}{d(w_ix+b_i)} \cdot \frac{d \text{ Loss of this layer}}{d \text{ LeakyReLU}(w_ix+b_i)} \\
+&= 1 \cdot [1 \text{ if } x>0 \text{, or } \alpha \text{ if } x<0] \cdot \frac{d \text{ Loss of this layer}}{d \text{ LeakyReLU}(w_ix+b_i)}
+\end{aligned}
+```
+---
+
+Of course for the final layer, we do not have a leakyReLU activation - so this is removed from our equation
+```math
+\frac{d Loss}{w_n} = \frac{d(w_nx+b_n)}{d w_n} \cdot \frac{d Loss}{d w_nx+b_n}
+= x^T \cdot (\hat{y} - y)
+```
+```math
+\frac{d Loss}{b_n} = \frac{d(w_nx+b_n)}{d b_n} \cdot \frac{d Loss}{d (w_nx+b_n)}
+= 1 \cdot (\hat{y} - y)
+```
+
+Note: the above equations only calculate the gradient for 1 instance of data. We must use the mean gradient across all instances of data in our batch for batch-gradient descent. 
 ## Weight initialisation
 There are some issues with the gradient descent model. You can imaging, that if we are traversing down the gradient, we may converge onto a local minima rather than the global minima, thus leading to less-than-optimal model. There are many methods for setting the initial wights of the model to help reduce the likelihood of this. I use the He method of initialisaiton, where each the weights of each layer are randomly sampled from a normal distribution with mean 0 and std $\sqrt{\frac{2}{n}}$ where $n$ is the number of inputs into the layer. This is reguarded good practice for Relu layers. 
 
