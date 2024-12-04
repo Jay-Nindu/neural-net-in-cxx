@@ -32,5 +32,14 @@ and from my cpp implementation:
 
 We can see that the y axis has a different scale - at the moment I believe this is due using a different divisor in my implementation of mse loss. Overall I am happy to say that my c++ neural network implementation is a success!
 
-## An explanation of my neural network implementation
+# An explanation of my neural network implementation
 a.k.a an explanation of the theory behind gradient descent
+
+## What is a neural network
+A neural network is a sequence of layers - this can be thought of as a sequetially applied mathematical functions that maps a vector input $a$ of $i$ dimension ($a \in \mathbb{R}^i$, $a$ being a row vector) and applies matrix transformation producing an output vector $b$ of $o$ dimension ($b \in \mathbb{R}^o$, $b$ being a row vector). Each layer will apply the following transformation: $b = w \cdot a + b$ where $w$ is a matrix of dimensions $a$ x $b$, and b is a vector of dimension $b$. $w \cdot a$ is the dot product of $w$ and $a$. This is a linear transformation.
+
+To allow for non-linear mappings between inputs and outputs of each layer, we apply an activation function at each layer (some non-linear transformation of the data after each linear transformation). I have chosen the leaky-ReLU (leaky rectified linear unit function). This builds upon the ReLU activation (defined as $ReLU(x) = max(x, 0) = \frac{x + |x|}{2}$ - essentially preventing any negative values from being passed forwards). ReLU activaions can potentially lead to dead neurons: neurons that will never fire due to learning a large negative bias. Instead of returning 0 for a negative input $X$, leaky-Rely instead returns $\alpha X$ where $\alpha$ is some coefficient that we define. 
+
+By stacking these layers we create a mathematical function mapping between the dependant variable $X$ of some dimensions, to the vector space of our desired output $Y$. 
+
+## How do we edit neural networks so they can better model the relationship between X (inputs) and Y (outputs) 
