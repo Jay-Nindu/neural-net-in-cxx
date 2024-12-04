@@ -1,13 +1,32 @@
 #include "optimiser.h"
 #include<iostream>
 
+using namespace std;
+
 void readIn(vector<matrix> &inputs, vector<matrix> &outputs, int numSize){
     // reading in X
+    double count = 0.0;
+    matrix mean(1, 8, 0.0);
+    matrix m2(1, 8, 0.0);
+
     for(int i = 0; i < numSize; i++){
         matrix x(1, 8);
         cin >> x;
 
+
+        count = count+1.0;
+        matrix delta = x-mean;
+        mean += delta/count;
+        matrix delta2 = x-mean;
+        m2 += elementWiseMult(delta2, delta);
         inputs.push_back(x);
+    }
+
+    m2 = sqrt(m2/numSize); 
+
+    //data normalisation
+    for(int i = 0; i < numSize; i++){
+        inputs[i] = elementWiseDiv(inputs[i]-mean, m2);
     }
 
     // reading in Y
@@ -19,7 +38,6 @@ void readIn(vector<matrix> &inputs, vector<matrix> &outputs, int numSize){
 
 }
 
-using namespace std;
 int main(){
     // int numSize; cin >> numSize;
 
@@ -34,13 +52,13 @@ int main(){
     model myModel(structure);
 
 
-    int numEpochs = 10;
+    int numEpochs = 50;
     for(int e = 0; e < numEpochs; e++){
         double currError = 0.0;
         for(int i = 0; i < trainInputs.size(); i++){
             currError += forward(myModel, trainInputs[i], trainOutpus[i], 14447.0); //14447.0
         }
-        backpropogate(myModel, 0.001);
+        backpropogate(myModel, 0.1);
 
         cout << "train ERROR FOR EPOCH " << currError << endl;
 
