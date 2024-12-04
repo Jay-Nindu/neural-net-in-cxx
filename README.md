@@ -33,7 +33,7 @@ and from my cpp implementation:
 
 ![cppImplementation](Graphs/cppImplementation.png)
 
-We can see that the y axis has a different scale - at the moment I believe this is due using a different divisor in my implementation of mse loss. Overall I am happy to say that my c++ neural network implementation is a success!
+We can see that the y axis has a different scale - at the moment I believe this is due using a different divisor in my implementation of mse loss. Looking at "Output/cpp: predicted vs actual.txt" we see that the model does a decent job at estimating housing prices. Because my network successfully improves with more training, I am happy to say that my c++ neural network implementation is a success!
 
 # An explanation of my neural network implementation
 a.k.a an explanation of the theory behind gradient descent
