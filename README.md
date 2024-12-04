@@ -8,8 +8,9 @@ Included also in the discussion below, as well as in the "Pytorch implementation
 1) Pytorch implementation - contains a neural network implemented using pytorch. (Incomplete)
 2) C++ implementation - contains all relevant files to my implementation of a neural network in c++.
 3) values.txt is the input file containing data from the California housing dataset - used as input for the c++ implementation (input taken in main.cpp)
-4) output.txt is the output from main.cpp
-5) Graphs - graphs generated from matplotlib.pyplot that contain error vs epoch curves for both the pytorch and c++ implementations of the neural network. (Incomplete)
+4) error_cpp.txt contains the errors from the cpp implemented neural network, updating with each epoch.
+5) Predicted vs actual txt: This file contains inputs (X), outputs (predicton), and actual value (Y) as per the last epoch of training.
+6) Graphs - graphs generated from matplotlib.pyplot that contain error vs epoch curves for both the pytorch and c++ implementations of the neural network. (Incomplete)
 
 # An explanation of my neural network implementation
 A.K.A. an explanation of the theory behind gradient descent
