@@ -21,7 +21,7 @@ Download the "C++ implementation" folder and migrate into it via command prompt.
 ```
 g++ main.cpp optimiser.cpp matrix.cpp neuralnet.cpp
 ```
-Then the following command to run:
+Then the following command to run (you will have to download and move input.txt into the same folder): 
 ```
 a.exe < input.txt > output.txt
 ```
@@ -43,7 +43,7 @@ A neural network is a sequence of layers - this can be thought of as a sequetial
 ```math
 b = w \cdot a + b
 ```
-where $w$ (our weights) is a matrix of dimensions $a$ x $b$ , and b (our biases) is a vector of dimension $b$, and $w \cdot a$ is the dot product of $w$ and $a$. This is a linear transformation.
+where $w$ (our weights) is a matrix of dimensions $a$ x $b$ , and b (our biases) is a vector of dimension $b$, and $w \cdot a$ is the dot product of $w$ and $a$. This is a linear transformation. Note: I have implemented the naive approach to matrix dot products - I am aware of optimisations that could be made, but have ultimately decided they would not contribute much to the goal of this project.
 
 To allow for non-linear mappings between inputs and outputs of each layer, we apply an activation function at each layer (some non-linear transformation of the data after each linear transformation). I have chosen the leaky-ReLU (leaky rectified linear unit function). This builds upon the ReLU activation. This is defined as 
 ```math
@@ -63,7 +63,7 @@ We train our neural networks in order to optimise a cost function. I use the mea
 note the 2 on the denominator which simplifies finding the gradient as described below.
 By optimising this with respects to the weights and biases in our neural network, we minimise our cost function and thus hope to improve the accuracy of our model. Unlike linear regression, this optimisation problem does not have a closed form solution - so we use a process called gradient descent.
 
-Gradient descent involves calculating the gradient of our loss with respect to each weight and bias in our model. This gradient represents the steepest incline at the state the model is currently in. By subtracting the respective gradient from each weight, we are moving down the gradient (i.e. down the curve - see below diagram) and moving to the point of lowest cost.
+Gradient descent involves calculating the gradient of our loss with respect to each weight and bias in our model. This gradient represents the steepest incline at the state the model is currently in. By subtracting the respective gradient from each weight, we are moving down the gradient (i.e. down the curve - see below diagram) and moving to the point of lowest cost. We move down this graient at a rate called the "learning rate" which is a user defined parameter similar to the $\alpha$ of the leeky-ReLU. The learning rate controls how fast we approach our minima, if too large we may jump over our minima to the other side of the curve.
 
 ![Grad descent](README_images/GradDescDesc.png)
 
