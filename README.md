@@ -1,5 +1,5 @@
 # neural-net-in-cxx
-Implementation of neural network architecture in c++. This is designed to predict housing prices from the [California housing dataset](https://scikit-learn.org/dev/modules/generated/sklearn.datasets.fetch_california_housing.html). The model uses He weight initialisation, and also leaky-relu. Feature vectors are standardised before being passed into the neural network. Backpropogation uses batch gradient descent. MSE loss is used as a criterion. 
+This is an implementation of neural network architecture in c++, designed to predict housing prices from the [California housing dataset](https://scikit-learn.org/dev/modules/generated/sklearn.datasets.fetch_california_housing.html). The model uses He weight initialisation, leaky-relu activation for all layers except for the output layer, batch gradient descent, and MSE loss. Feature vectors are standardised before being passed into the network.
 
 Included also in the discussion below, as well as in [pytorch_implementation.py](pytorch_implementation.py), is an implementation of a neural network in pytorch also trained on the [California housing dataset](https://scikit-learn.org/dev/modules/generated/sklearn.datasets.fetch_california_housing.html). This will serve as a touchstone to compare the effectiveness of my neural-net implentation against.
 
@@ -70,21 +70,31 @@ Because our neural network is essentialy a series of composed functions of such 
 ```math
 w_n\cdot ReLU(w_{n-1} \cdot X + b_{n-1}) + b_n
 ```
-where $w_n$ and $b_n$ are the respective weights and biases for layer $n$, we can compute the gradient at any point by using the chain rule. For example we take the loss with respect to the output of any layer (which for the final layer is simply $ \hat{y} - y $). 
+where $w_n$ and $b_n$ are the respective weights and biases for layer $n$, we can compute the gradient at any point by using the chain rule. For example we take the derivative of the loss with respect to the output of any layer. 
 Then the gradient of our loss with respect to the weights of that layer $i$ is:
 
 ```math
 \begin{aligned}
-\frac{d \text{ Loss of this layer}}{w_i} &= \frac{d(w_ix+b_i)}{d w_i} \cdot \frac{d \text{ LeakyReLU}(w_ix+b_i)}{d(w_ix+b_i)} \cdot \frac{d \text{ Loss of this layer}}{d \text{ LeakyReLU}(w_ix+b_i)} \\
-&= x^T \cdot [1 \text{ if } x>0 \text{, or } \alpha \text{ if } x<0] \cdot \frac{d \text{ Loss of this layer}}{d \text{ LeakyReLU}(w_ix+b_i)}
+\frac{d \text{ Loss wrt this layer output}}{w_i} &= \frac{d(w_ix+b_i)}{d w_i} \cdot \frac{d \text{ LeakyReLU}(w_ix+b_i)}{d(w_ix+b_i)} \cdot d \text{ Loss wrt this layers output}\\
+&= x^T \cdot [1 \text{ if } x>0 \text{, or } \alpha \text{ if } x<0] \cdot d \text{ Loss wrt this layers output}
 \end{aligned}
 ```
 ```math
 \begin{aligned}
-\frac{d \text{ Loss of this layer}}{w_i} &= \frac{d(w_ix+b_i)}{d b_i} \cdot \frac{d \text{ LeakyReLU}(w_ix+b_i)}{d(w_ix+b_i)} \cdot \frac{d \text{ Loss of this layer}}{d \text{ LeakyReLU}(w_ix+b_i)} \\
-&= 1 \cdot [1 \text{ if } x>0 \text{, or } \alpha \text{ if } x<0] \cdot \frac{d \text{ Loss of this layer}}{d \text{ LeakyReLU}(w_ix+b_i)}
+\frac{d \text{ Loss wrt this layers output}}{w_i} &= \frac{d(w_ix+b_i)}{d b_i} \cdot \frac{d \text{ LeakyReLU}(w_ix+b_i)}{d(w_ix+b_i)} \cdot d \text{ Loss wrt this layers output}\\
+&= 1 \cdot [1 \text{ if } x>0 \text{, or } \alpha \text{ if } x<0] \cdot d \text{ Loss of this layer}
 \end{aligned}
 ```
+---
+Then, as the output of the previous layer is the input for this layer ($X$ in the above equations) we get the loss for the previous layers output:
+```math
+\begin{aligned}
+\frac{d \text{Loss}}{\text{previous layers output}}
+&= \frac{d(w_ix+b_i)}{d X} \cdot \frac{d \text{ LeakyReLU}(w_ix+b_i)}{d(w_ix+b_i)} \cdot d \text{ Loss wrt this layers output}\\
+&= [1 \text{ if } x>0 \text{, or } \alpha \text{ if } x<0] \cdot d \text{ Loss wrt this layers output} \cdot w_i^T
+\end{aligned}
+```
+
 ---
 
 Of course for the final layer, we do not have a leakyReLU activation - so this is removed from our equation
@@ -96,9 +106,19 @@ Of course for the final layer, we do not have a leakyReLU activation - so this i
 \frac{d Loss}{b_n} = \frac{d(w_nx+b_n)}{d b_n} \cdot \frac{d Loss}{d (w_nx+b_n)}
 = 1 \cdot (\hat{y} - y)
 ```
+```math
+\begin{aligned}
+\frac{d Loss}{d \text{previous layers output}} &= \frac{d \text{Loss wrt this layers output}}{d x} \\
+&= \frac{d Loss}{d w_nx+b_n} \cdot \frac{d(w_nx+b_n)}{d X} \\
+&= (\hat{y} - y) \cdot w_n^T
+\end{aligned}
+```
 
-Note: the above equations only calculate the gradient for 1 instance of data. We must use the mean gradient across all instances of data in our batch for batch-gradient descent. 
+
+Note: the above equations only calculate the gradient for 1 instance of data. We must use the mean gradient across all instances of data in our batch for batch-gradient descent. In implementation, we will start by computing the gradients for biases and weights of the final layer. Then compute the gradient of the loss compared to the output of the previous layer, and move backwards. Hence the name: backpropagation.
+
 ## Weight initialisation
 There are some issues with the gradient descent model. You can imaging, that if we are traversing down the gradient, we may converge onto a local minima rather than the global minima, thus leading to less-than-optimal model. There are many methods for setting the initial wights of the model to help reduce the likelihood of this. I use the He method of initialisaiton, where each the weights of each layer are randomly sampled from a normal distribution with mean 0 and std $\sqrt{\frac{2}{n}}$ where $n$ is the number of inputs into the layer. This is reguarded good practice for Relu layers. 
 
 ## Data standardisation
+Because the initial parameters of a model are randomly generated - there can be large instability in a models performance if the input data is not scaled appropriately. This means the model may perform very differently each time it is built and trained. For example, if the input values are very large, then the model will learn very large weights (which can lead to unstable behaviour, and potentially lead to integer overflows and NaN's in your weights). To protect against this, and to make our inputs unitless, I have standaridised each feature in the train input data (w.r.t. the rest of the train dataset) and the test input data (wrt to the test dataset). I used Welford's online algorithm to compute the standard deviation and mean - but this is out of the scope of this article so I will not elaborate on this. (Code is present in main.cpp).
