@@ -12,6 +12,8 @@ Included also in the discussion below, as well as in [pytorch_implementation.py]
     b) cpp_errors_per_epoch.txt: essentially the output generapted by main.cpp (in the c++ implementation folder). Contains a list of train and test errors (model was not trained on the test data set) for each epoch.
    c) python output: contains the output of python_implementation.py - essentially the test and train loss per epoch
 5) Graphs - a folder containing graphs generated from matplotlib.pyplot that contain error vs epoch curves for both the pytorch and c++ implementations of the neural network.
+6) README_images: images I have made to assist my explanations throughout the rest of this article
+7) Proof of competency: contains images of my rough working to show that I the gradient descent logic used in this project - contains mostly scribbles of linear algebra
 
 ## How to compile my c++ code
 Download the "C++ implementation" folder and migrate into it via command prompt. Run the following command to compile: (note: using gcc compiler)
@@ -60,3 +62,10 @@ We train our neural networks in order to optimise a cost function. I use the mea
 By optimising this with respects to the weights and biases in our neural network, we minimise our cost function and thus hope to improve the accuracy of our model. Unlike linear regression, this optimisation problem does not have a closed form solution - so we use a process called gradient descent.
 
 Gradient descent involves calculating the gradient of our loss with respect to each weight and bias in our model. This gradient represents the steepest incline at the state the model is currently in. By subtracting the respective gradient from each weight, we are moving down the gradient (i.e. down the curve - see below diagram) and moving to the point of lowest cost.
+
+![Grad descent](README_images/GradDescDesc.png)
+
+
+## Weight initialisation
+
+## Data standardisation
