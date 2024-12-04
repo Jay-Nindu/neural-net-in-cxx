@@ -25,7 +25,13 @@ a.exe < input.txt > output.txt
 ```
 
 ## Results
-Here is the epoch-loss graph for the pytorch implementation ![image](Graphs/"cpp implementation.png")
+Here is the epoch-loss graph for the pytorch implementation: ![pyTorchImplementation](Graphs/pytorchImplementation.png) 
+
+and from my cpp implementation: 
+
+![cppImplementation](Graphs/cppImplementation.png)
+
+So overall I am happy to say that my c++ neural network implementation is a success!
 
 ## An explanation of my neural network implementation
-A.K.A. an explanation of the theory behind gradient descent
+a.k.a an explanation of the theory behind gradient descent
