@@ -13,7 +13,7 @@ Included also in the discussion below, as well as in [pytorch_implementation.py]
    c) python output: contains the output of python_implementation.py - essentially the test and train loss per epoch
 5) Graphs - a folder containing graphs generated from matplotlib.pyplot that contain error vs epoch curves for both the pytorch and c++ implementations of the neural network.
 6) README_images: images I have made to assist my explanations throughout the rest of this article
-7) Proof of competency: contains images of my rough working to show that I the gradient descent logic used in this project - contains mostly scribbles of linear algebra
+7) Proof of competency: contains images of my rough working to show that I the gradient descent logic used in this project - contains mostly scribbles of linear algebra. Ignore how I have used an old diary as scrap paper, the workings were done in the past month (November 2024)
 
 ## How to compile my c++ code
 Download the "C++ implementation" folder and migrate into it via command prompt. Run the following command to compile: (note: using gcc compiler)
