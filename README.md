@@ -65,7 +65,12 @@ Gradient descent involves calculating the gradient of our loss with respect to e
 
 ![Grad descent](README_images/GradDescDesc.png)
 
+Because our neural network is essentialy a series of composed functions of such as: 
+```
+```
+we can compute the gradient at any point by using the chain rule. For example the gradient of the loss with respects to the loss of the FINISH
 
 ## Weight initialisation
+There are some issues with the gradient descent model. You can imaging, that if we are traversing down the gradient, we may converge onto a local minima rather than the global minima, thus leading to less-than-optimal model. There are many methods for setting the initial wights of the model to help reduce the likelihood of this. I use the He method of initialisaiton, where each the weights of each layer are randomly sampled from a normal distribution with mean 0 and std $\sqrt{\frac{2}{n}}$ where $n$ is the number of inputs into the layer. This is reguarded good practice for Relu layers. 
 
 ## Data standardisation
