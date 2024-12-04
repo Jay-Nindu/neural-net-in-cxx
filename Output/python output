@@ -1,0 +1,252 @@
+['MedInc', 'HouseAge', 'AveRooms', 'AveBedrms', 'Population', 'AveOccup', 'Latitude', 'Longitude']
+Using cpu device
+Epoch 0/49
+----------
+train Loss: 1310.4705
+test Loss: 519.2691
+
+Epoch 1/49
+----------
+train Loss: 1224.0895
+test Loss: 492.4865
+
+Epoch 2/49
+----------
+train Loss: 1161.1206
+test Loss: 472.6915
+
+Epoch 3/49
+----------
+train Loss: 1114.5728
+test Loss: 457.9448
+
+Epoch 4/49
+----------
+train Loss: 1079.8936
+test Loss: 446.8870
+
+Epoch 5/49
+----------
+train Loss: 1053.8865
+test Loss: 438.5680
+
+Epoch 6/49
+----------
+train Loss: 1034.3180
+test Loss: 432.2947
+
+Epoch 7/49
+----------
+train Loss: 1019.5603
+test Loss: 427.5560
+
+Epoch 8/49
+----------
+train Loss: 1008.4119
+test Loss: 423.9728
+
+Epoch 9/49
+----------
+train Loss: 999.9814
+test Loss: 421.2615
+
+Epoch 10/49
+----------
+train Loss: 993.6019
+test Loss: 419.2088
+
+Epoch 11/49
+----------
+train Loss: 988.7719
+test Loss: 417.6542
+
+Epoch 12/49
+----------
+train Loss: 985.1138
+test Loss: 416.4765
+
+Epoch 13/49
+----------
+train Loss: 982.3425
+test Loss: 415.5841
+
+Epoch 14/49
+----------
+train Loss: 980.2426
+test Loss: 414.9079
+
+Epoch 15/49
+----------
+train Loss: 978.6513
+test Loss: 414.3954
+
+Epoch 16/49
+----------
+train Loss: 977.4453
+test Loss: 414.0070
+
+Epoch 17/49
+----------
+train Loss: 976.5311
+test Loss: 413.7125
+
+Epoch 18/49
+----------
+train Loss: 975.8382
+test Loss: 413.4893
+
+Epoch 19/49
+----------
+train Loss: 975.3130
+test Loss: 413.3202
+
+Epoch 20/49
+----------
+train Loss: 974.9148
+test Loss: 413.1919
+
+Epoch 21/49
+----------
+train Loss: 974.6130
+test Loss: 413.0947
+
+Epoch 22/49
+----------
+train Loss: 974.3842
+test Loss: 413.0210
+
+Epoch 23/49
+----------
+train Loss: 974.2107
+test Loss: 412.9651
+
+Epoch 24/49
+----------
+train Loss: 974.0791
+test Loss: 412.9227
+
+Epoch 25/49
+----------
+train Loss: 973.9794
+test Loss: 412.8906
+
+Epoch 26/49
+----------
+train Loss: 973.9038
+test Loss: 412.8662
+
+Epoch 27/49
+----------
+train Loss: 973.8465
+test Loss: 412.8478
+
+Epoch 28/49
+----------
+train Loss: 973.8031
+test Loss: 412.8338
+
+Epoch 29/49
+----------
+train Loss: 973.7702
+test Loss: 412.8232
+
+Epoch 30/49
+----------
+train Loss: 973.7452
+test Loss: 412.8151
+
+Epoch 31/49
+----------
+train Loss: 973.7263
+test Loss: 412.8090
+
+Epoch 32/49
+----------
+train Loss: 973.7119
+test Loss: 412.8044
+
+Epoch 33/49
+----------
+train Loss: 973.7010
+test Loss: 412.8009
+
+Epoch 34/49
+----------
+train Loss: 973.6928
+test Loss: 412.7982
+
+Epoch 35/49
+----------
+train Loss: 973.6865
+test Loss: 412.7962
+
+Epoch 36/49
+----------
+train Loss: 973.6818
+test Loss: 412.7947
+
+Epoch 37/49
+----------
+train Loss: 973.6782
+test Loss: 412.7935
+
+Epoch 38/49
+----------
+train Loss: 973.6755
+test Loss: 412.7927
+
+Epoch 39/49
+----------
+train Loss: 973.6734
+test Loss: 412.7920
+
+Epoch 40/49
+----------
+train Loss: 973.6719
+test Loss: 412.7915
+
+Epoch 41/49
+----------
+train Loss: 973.6707
+test Loss: 412.7911
+
+Epoch 42/49
+----------
+train Loss: 973.6698
+test Loss: 412.7908
+
+Epoch 43/49
+----------
+train Loss: 973.6691
+test Loss: 412.7906
+
+Epoch 44/49
+----------
+train Loss: 973.6686
+test Loss: 412.7904
+
+Epoch 45/49
+----------
+train Loss: 973.6682
+test Loss: 412.7903
+
+Epoch 46/49
+----------
+train Loss: 973.6679
+test Loss: 412.7902
+
+Epoch 47/49
+----------
+train Loss: 973.6676
+test Loss: 412.7901
+
+Epoch 48/49
+----------
+train Loss: 973.6675
+test Loss: 412.7901
+
+Epoch 49/49
+----------
+train Loss: 973.6673
+test Loss: 412.7900
+
