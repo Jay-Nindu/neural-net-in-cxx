@@ -31,7 +31,7 @@ and from my cpp implementation:
 
 ![cppImplementation](Graphs/cppImplementation.png)
 
-So overall I am happy to say that my c++ neural network implementation is a success!
+We can see that the y axis has a different scale - at the moment I believe this is due to my implementation of mse loss and potentially due to using a different divisor. So overall I am happy to say that my c++ neural network implementation is a success!
 
 ## An explanation of my neural network implementation
 a.k.a an explanation of the theory behind gradient descent
