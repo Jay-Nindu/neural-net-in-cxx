@@ -5,12 +5,27 @@ Currently works with stochastic gradient descent. Still working out bugs with ba
 Included also in the discussion below, as well as in the "Pytorch implementation" folder, is an implementation of a neural network in pytorch also trained on the [California housing dataset](https://scikit-learn.org/dev/modules/generated/sklearn.datasets.fetch_california_housing.html). This will serve as a touchstone to compare the effectiveness of my neural-net implentation against.
 
 ## Files/Folders
-1) Pytorch implementation - contains a neural network implemented using pytorch. (Incomplete)
+1) Pytorch implementation - contains a neural network implemented using pytorch
 2) C++ implementation - contains all relevant files to my implementation of a neural network in c++.
-3) values.txt is the input file containing data from the California housing dataset - used as input for the c++ implementation (input taken in main.cpp)
-4) error_cpp.txt contains the errors from the cpp implemented neural network, updating with each epoch.
-5) Predicted vs actual txt: This file contains inputs (X), outputs (predicton), and actual value (Y) as per the last epoch of training.
-6) Graphs - graphs generated from matplotlib.pyplot that contain error vs epoch curves for both the pytorch and c++ implementations of the neural network. (Incomplete)
+3) input.txt is the input file containing data from the California housing dataset - used as input for the c++ implementation (input taken in main.cpp)
+4) Output: contains outputs from both the python and cpp implementations.
+    a) "cpp: predicted vs actual.txt": contains input value (x), output of the model (predicted) and target (y), ascertained in final epoch of training.
+    b) cpp_errors_per_epoch.txt: essentially the output generapted by main.cpp (in the c++ implementation folder). Contains a list of train and test errors (model was not trained on the test data set) for each epoch.
+   c) python output: contains the output of python_implementation.py - essentially the test and train loss per epoch
+5) Graphs - a folder containing graphs generated from matplotlib.pyplot that contain error vs epoch curves for both the pytorch and c++ implementations of the neural network.
 
-# An explanation of my neural network implementation
+## How to compile my c++ code
+Download the "C++ implementation" folder and migrate into it via command prompt. Run the following command to compile: (note: using gcc compiler)
+```
+g++ main.cpp optimiser.cpp matrix.cpp neuralnet.cpp
+```
+Then the following command to run:
+```
+a.exe < input.txt > output.txt
+```
+
+## Results
+Here is the epoch-loss graph for the pytorch implementation ![image](Graphs/"cpp implementation.png")
+
+## An explanation of my neural network implementation
 A.K.A. an explanation of the theory behind gradient descent
