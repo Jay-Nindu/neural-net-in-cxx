@@ -67,7 +67,7 @@ int main(){
         for(int i = 0; i < 6193; i++){
             currError += forward_notrain(myModel, testInputs[i], testOutputs[i], 6193.0);
         }
-        cout << "test ERROR FOR EPOCH " << currError << endl;
+        cout << "test ERROR FOR EPOCH " << currError << endl << endl;
     }
 
 
