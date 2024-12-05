@@ -47,7 +47,7 @@ where $w$ (our weights) is a matrix of dimensions $i$ x $o$ , and b (our biases)
 
 To allow for non-linear mappings between inputs and outputs of each layer, we apply an activation function at each layer (some non-linear transformation of the data after each linear transformation). I have chosen the leaky-ReLU (leaky rectified linear unit function). This builds upon the ReLU activation defined as:
 ```math
-ReLU(x) = max(x, 0) = \frac{x + |x|}{2}
+ReLU(x) = \text{max}(x, 0) = \frac{x + |x|}{2}
 ```
 which prevents any negative values from being passed forwards. ReLU activaions can potentially lead to dead neurons: neurons that will never fire due to learning large negative biases. Instead of returning 0 for a negative input $X$, leaky-Rely instead returns $\alpha X$ where $\alpha$ is some coefficient that we define. 
 
