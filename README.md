@@ -1,7 +1,7 @@
 # neural-net-in-cxx
 This is an implementation of neural network architecture in c++, designed to predict housing prices from the [California housing dataset](https://scikit-learn.org/dev/modules/generated/sklearn.datasets.fetch_california_housing.html). The model uses He weight initialisation, leaky-relu activation for all layers except for the output layer, batch gradient descent, and MSE loss. Feature vectors are standardised before being passed into the network.
 
-Included also in the discussion below, as well as in [pytorch_implementation.py](pytorch_implementation.py), is an implementation of a neural network in pytorch also trained on the [California housing dataset](https://scikit-learn.org/dev/modules/generated/sklearn.datasets.fetch_california_housing.html). This will serve as a touchstone to compare the effectiveness of my neural-net implentation against.
+Additionally included in the discussion below, as well as in [pytorch_implementation.py](pytorch_implementation.py), is an implementation of a neural network in pytorch also trained on the [California housing dataset](https://scikit-learn.org/dev/modules/generated/sklearn.datasets.fetch_california_housing.html). This will serve as a touchstone to compare the effectiveness of my neural-net implementation against.
 
 ## Files/Folders
 1) pytorch_implementation.py - contains a neural network implemented using pytorch
@@ -33,7 +33,7 @@ and from my cpp implementation:
 
 ![cppImplementation](Graphs/cppImplementation.png)
 
-We can see that the y axis has a different scale - at the moment I believe this is due using a different divisor in my implementation of mse loss. Looking at "Output/cpp: predicted vs actual.txt" we see that the model does a decent job at estimating housing prices. Because my network successfully improves with more training, I am happy to say that my c++ neural network implementation is a success!
+We can see that the y axis has a different scale - at the moment I believe this is due to using a different divisor in my implementation of mse loss. Looking at "Output/cpp: predicted vs actual.txt" we see that the model does a decent job at estimating housing prices. Because my network successfully improves with more training, I am happy to say that my c++ neural network implementation is a success!
 
 # An explanation of my neural network implementation
 a.k.a an explanation of the theory behind gradient descent
