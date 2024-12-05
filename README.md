@@ -49,7 +49,7 @@ To allow for non-linear mappings between inputs and outputs of each layer, we ap
 ```math
 \text{ReLU}(x) = \text{max}(x, 0) = \frac{x + |x|}{2}
 ```
-which prevents any negative values from being passed forwards. ReLU activaions can potentially lead to dead neurons: neurons that will never fire due to learning large negative biases. Instead of returning 0 for a negative input $X$, leaky-Rely instead returns $\alpha X$ where $\alpha$ is some coefficient that we define. 
+which prevents any negative values from being passed forward. ReLU activations can potentially lead to dead neurons: neurons that will never fire due to learning large negative biases. Instead of returning 0 for a negative input $X$, leaky-ReLU instead returns $\alpha X$ where $\alpha$ is some coefficient that we define. 
 
 ![leakyRelu gradients](README_images/LeakyReluDesc.png)
 
