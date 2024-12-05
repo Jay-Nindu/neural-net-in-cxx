@@ -72,7 +72,7 @@ Because our neural network is a series of composed functions, such as:
 ```math
 \hat{y} = w_n\cdot \text{ReLU}(w_{n-1} \cdot X + b_{n-1}) + b_n
 ```
-(where $w_n$ and $b_n$ are the respective weights and biases for layer $n$), we can compute the gradient at any point by using the chain rule. For example we take the derivative of the loss with respect to the output of any layer. 
+(where $w_n$ and $b_n$ are the respective weights and biases for layer $n$), we can compute the gradient at any point by using the chain rule. We take the derivative of the loss with respect to the output of any layer. 
 Then the gradient of our loss with respect to the weights of that layer $i$ is:
 
 ```math
