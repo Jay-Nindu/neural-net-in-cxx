@@ -58,7 +58,7 @@ By stacking these layers we create a mathematical function mapping between the d
 ## How do we train neural networks so they can better model the relationship between X (inputs) and Y (outputs)?
 We train our neural networks in order to optimise a cost function. I use the mean squared error loss, defined as:
 ```math
-\frac{1}{2n} \Sigma_{i=1}^n (\hat{y}_i - y_i)^2
+\text{MSE Loss} = \frac{1}{2n} \Sigma_{i=1}^n (\hat{y}_i - y_i)^2
 ```
 *Note: the 2 on the denominator which simplifies finding the gradient as described below.*
 
