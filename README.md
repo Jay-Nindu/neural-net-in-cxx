@@ -61,7 +61,8 @@ We train our neural networks in order to optimise a cost function. I use the mea
 \frac{1}{2n} \Sigma_{i=1}^n (\hat{y}_i - y_i)^2
 ```
 *Note: the 2 on the denominator which simplifies finding the gradient as described below.*
-By optimising this with respects to the weights and biases in our neural network, we minimise our cost function and thus hope to improve the accuracy of our model. Unlike linear regression, this optimisation problem does not have a closed form solution - so we use a process called gradient descent.
+
+By optimising this cost with respects to the weights and biases in our neural network, we minimise our cost function and thus hope to improve the accuracy of our model. Unlike linear regression, this optimisation problem does not have a closed form solution - so we use a process called gradient descent.
 
 Gradient descent involves calculating the gradient of our loss with respect to each weight and bias in our model. This gradient represents the steepest incline at the state the model is currently in. By subtracting the respective gradient from each weight, we are moving down the gradient (i.e. down the curve - see below diagram) and moving to the point of lowest cost. We move down this graient at a rate called the "learning rate" which is a user defined parameter similar to the $\alpha$ of the leeky-ReLU. The learning rate controls how fast we approach our minima, if too large we may jump over our minima to the other side of the curve.
 
