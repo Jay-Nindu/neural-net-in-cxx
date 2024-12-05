@@ -43,7 +43,7 @@ A neural network is a sequence of layers - this can be thought of as sequentiall
 ```math
 b = w \cdot a + b
 ```
-where $w$ (our weights) is a matrix of dimensions $i$ x $o$ , and b (our biases) is a vector of dimension $o$, and $w \cdot a$ is the dot product of $w$ and $a$. This is a linear transformation. Note: I have implemented the naive approach to matrix dot products - I am aware of optimisations that could be made, but have ultimately decided they would not contribute much to the goal of this project.
+where $w$ (our weights) is a matrix of dimensions $i$ x $o$ , and b (our biases) is a vector of dimension $o$, and $w \cdot a$ is the dot product of $w$ and $a$. This is a linear transformation. *Note: I have implemented the naive approach to matrix dot products - I am aware of optimisations that could be made, but have ultimately decided they would not contribute much to the goal of this project.*
 
 To allow for non-linear mappings between inputs and outputs of each layer, we apply an activation function at each layer (some non-linear transformation of the data after each linear transformation). I have chosen the leaky-ReLU (leaky rectified linear unit function). This builds upon the ReLU activation. This is defined as 
 ```math
