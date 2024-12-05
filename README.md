@@ -38,7 +38,7 @@ We can see that the y axis has a different scale - at the moment I believe this 
 # An explanation of my neural network implementation
 a.k.a an explanation of the theory behind gradient descent
 
-## What is a neural network
+## What is a neural network?
 A neural network is a sequence of layers - this can be thought of as sequentially applied mathematical functions each mapping a vector input $a$ of $i$ dimension ($a \in \mathbb{R}^i$, $a$ being a row vector), applying a matrix transformation, producing an output vector $b$ of $o$ dimension ($b \in \mathbb{R}^o$, $b$ being a row vector). Each layer will apply the following transformation: 
 ```math
 b = w \cdot a + b
@@ -53,14 +53,14 @@ which prevents any negative values from being passed forward. ReLU activations c
 
 ![leakyRelu gradients](README_images/LeakyReluDesc.png)
 
-By stacking these layers we create a mathematical function mapping between the dependant variable $X$ of some dimensions, to the vector space of our desired output $Y$. Note, I simply use a linear activation function for my final layer as this is what is typically deemed appropriate for regression problems. 
+By stacking these layers we create a mathematical function mapping between the dependant variable $X$ of some dimensions, to the vector space of our desired output $Y$. *Note: I simply use a linear activation function for my final layer as this is what is typically deemed appropriate for regression problems.*
 
-## How do we train neural networks so they can better model the relationship between X (inputs) and Y (outputs) 
-We train our neural networks in order to optimise a cost function. I use the mean squared error loss defined as:
+## How do we train neural networks so they can better model the relationship between X (inputs) and Y (outputs)?
+We train our neural networks in order to optimise a cost function. I use the mean squared error loss, defined as:
 ```math
 \frac{1}{2n} \Sigma_{i=1}^n (\hat{y}_i - y_i)^2
 ```
-note the 2 on the denominator which simplifies finding the gradient as described below.
+*Note: the 2 on the denominator which simplifies finding the gradient as described below.*
 By optimising this with respects to the weights and biases in our neural network, we minimise our cost function and thus hope to improve the accuracy of our model. Unlike linear regression, this optimisation problem does not have a closed form solution - so we use a process called gradient descent.
 
 Gradient descent involves calculating the gradient of our loss with respect to each weight and bias in our model. This gradient represents the steepest incline at the state the model is currently in. By subtracting the respective gradient from each weight, we are moving down the gradient (i.e. down the curve - see below diagram) and moving to the point of lowest cost. We move down this graient at a rate called the "learning rate" which is a user defined parameter similar to the $\alpha$ of the leeky-ReLU. The learning rate controls how fast we approach our minima, if too large we may jump over our minima to the other side of the curve.
