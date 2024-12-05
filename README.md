@@ -39,7 +39,7 @@ We can see that the y axis has a different scale - at the moment I believe this 
 a.k.a an explanation of the theory behind gradient descent
 
 ## What is a neural network
-A neural network is a sequence of layers - this can be thought of as a sequetially applied mathematical functions that maps a vector input $a$ of $i$ dimension ($a \in \mathbb{R}^i$, $a$ being a row vector) and applies matrix transformation producing an output vector $b$ of $o$ dimension ($b \in \mathbb{R}^o$, $b$ being a row vector). Each layer will apply the following transformation: 
+A neural network is a sequence of layers - this can be thought of as sequentially applied mathematical functions that maps a vector input $a$ of $i$ dimension ($a \in \mathbb{R}^i$, $a$ being a row vector) and applies matrix transformation producing an output vector $b$ of $o$ dimension ($b \in \mathbb{R}^o$, $b$ being a row vector). Each layer will apply the following transformation: 
 ```math
 b = w \cdot a + b
 ```
