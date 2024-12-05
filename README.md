@@ -68,7 +68,7 @@ Gradient descent involves calculating the gradient of our loss with respect to e
 
 ![Grad descent](README_images/GradDescDesc.png)
 
-Because our neural network is essentialy a series of composed functions of such as: 
+Because our neural network is a series of composed functions, eg: 
 ```math
 w_n\cdot ReLU(w_{n-1} \cdot X + b_{n-1}) + b_n
 ```
