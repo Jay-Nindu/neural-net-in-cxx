@@ -117,7 +117,7 @@ Of course for the final layer, we do not have a leakyReLU activation - so this i
 ```
 
 
-Note: the above equations only calculate the gradient for 1 instance of data. We must use the mean gradient across all instances of data in our batch for batch-gradient descent. In implementation, we will start by computing the gradients for biases and weights of the final layer. Then compute the gradient of the loss compared to the output of the previous layer, and move backwards. Hence the name: backpropagation.
+*Note: the above equations only calculate the gradient for 1 instance of data. We must use the mean gradient across all instances of data in our batch for batch-gradient descent. In implementation, we will start by computing the gradients for biases and weights of the final layer.* Then compute the gradient of the loss compared to the output of the previous layer, and move backwards. Hence the name: backpropagation.
 
 ## Weight initialisation
 There are some issues with the gradient descent model. You can imaging, that if we are traversing down the gradient, we may converge onto a local minima rather than the global minima, thus leading to less-than-optimal model. There are many methods for setting the initial wights of the model to help reduce the likelihood of this. I use the He method of initialisaiton, where each the weights of each layer are randomly sampled from a normal distribution with mean 0 and std $\sqrt{\frac{2}{n}}$ where $n$ is the number of inputs into the layer. This is reguarded good practice for Relu layers. 
