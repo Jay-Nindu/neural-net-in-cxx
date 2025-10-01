@@ -39,7 +39,8 @@ struct matrix{
 
     friend bool operator<(const matrix& lhs, const matrix& rhs);
     friend matrix elementWiseDiv(const matrix& lhs, const matrix& rhs);
-
+    friend matrix elementWiseMult(const matrix& lhs, const matrix& rhs);
+    friend matrix sqrt(const matrix& lhs);
 };
 
 std::ostream& operator<<(std::ostream& os, const matrix& obj);
