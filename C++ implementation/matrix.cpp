@@ -183,8 +183,8 @@ matrix operator/(const matrix& lhs, const double scalar){
 matrix& matrix::operator+=(const matrix&rhs){
     //if right side is too short in terms of rows, will project the size;
     //if left side is too short, returns error
-
     if(this->columns != rhs.columns){
+        cout << this <<  endl << rhs << endl;
         throw std::invalid_argument( "adding column vector to matrix: lhs rows != rhs rows\n" );
     }
     if(this->rows < rhs.rows){
@@ -245,6 +245,34 @@ matrix elementWiseDiv(const matrix& lhs, const matrix& rhs){
     for(int i = 0; i < lhs.rows; i++){
         for(int j = 0; j < lhs.columns; j++){
             ret[i][j] = lhs[i][j] / rhs[i][j];
+        }
+    }
+
+    return ret;
+
+}
+
+matrix elementWiseMult(const matrix& lhs, const matrix& rhs){
+    if(lhs.columns != rhs.columns || lhs.rows != rhs.rows){
+        throw std::invalid_argument( "your dimensions are incorrect for element wise Div\n" );
+    }
+
+    matrix ret(lhs.rows, lhs.columns, 0.0);
+    for(int i = 0; i < lhs.rows; i++){
+        for(int j = 0; j < lhs.columns; j++){
+            ret[i][j] = lhs[i][j] * rhs[i][j];
+        }
+    }
+
+    return ret;
+
+}
+
+matrix sqrt(const matrix& lhs){
+    matrix ret(lhs.rows, lhs.columns, 0.0);
+    for(int i = 0; i < lhs.rows; i++){
+        for(int j = 0; j < lhs.columns; j++){
+            ret[i][j] = sqrt(lhs[i][j]);
         }
     }
 
